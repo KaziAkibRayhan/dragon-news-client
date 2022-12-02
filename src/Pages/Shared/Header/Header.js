@@ -10,7 +10,13 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.error(err))
+    }
     return (
         <Navbar collapseOnSelect className="mb-4" expand="lg" bg="light" variant="light">
             <Container>
@@ -33,7 +39,19 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link>{user?.displayName}</Nav.Link>
+                        <>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span> {user?.displayName}</span>
+                                        <button onClick={handleLogOut} className="btn btn-outline-warning ms-2">Log Out</button>
+                                    </>
+                                    : <>
+                                        <Link className='me-2 ' to={'/login'}>Login</Link>
+                                        <Link to={'/register'}>Register</Link>
+                                    </>
+                            }
+                        </>
                         <Nav.Link eventKey={2}>
                             {user?.photoURL ? <Image roundedCircle src={user.photoURL} style={{ height: '30px' }}></Image>
                                 : <FaUserAlt />
