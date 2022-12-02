@@ -13,10 +13,10 @@ const NewsSummeryCard = ({ news }) => {
             <Card className="mb-5">
                 <Card.Header className="d-flex justify-content-between align-items-center">
                     <div className='d-flex'>
-                        <Image className="me-2" src={author.img} roundedCircle style={{ height: '50px' }}></Image>
+                        <Image className="me-2" src={author?.img} roundedCircle style={{ height: '50px' }}></Image>
                         <div>
-                            <p className='mb-0'>{author.name}</p>
-                            <p>{author.published_date}</p>
+                            <p className='mb-0'>{author?.name}</p>
+                            <p>{author?.published_date}</p>
                         </div>
                     </div>
                     <div>
