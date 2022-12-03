@@ -52,11 +52,13 @@ const Header = () => {
                                     </>
                             }
                         </>
-                        <Nav.Link eventKey={2}>
-                            {user?.photoURL ? <Image roundedCircle src={user.photoURL} style={{ height: '30px' }}></Image>
-                                : <FaUserAlt />
+                        <Link to={'/profile'}>
+                            {
+                                user?.photoURL ?
+                                    <Image roundedCircle src={user.photoURL} style={{ height: '30px' }}></Image>
+                                    : <FaUserAlt />
                             }
-                        </Nav.Link>
+                        </Link>
                     </Nav>
                     <div className="d-lg-none mt-3">
                         <LeftSideNav />
